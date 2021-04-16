@@ -11,11 +11,11 @@ export const getByProdutc = (id: string) => {
     return http.get<Produtc>(`${URL}/${id}`);
 }
 
-export const postProdutc = (Produtc: Produtc) => {
-    return http.post<Produtc>(`${URL}/`, Produtc);
+export const postProdutc = (produtc: Produtc) => {
+    return http.post<Produtc>(`${URL}/`, produtc);
 }
-export const putProdutc = (Produtc: Produtc[]) => {
-    return http.put<Produtc>(`${URL}/`, Produtc);
+export const putProdutc = (produtc: Produtc) => {
+    return http.put<Produtc>(`${URL}/${produtc._id}`, produtc);
 }
 
 export const deleteProdutc = (id: string) => {

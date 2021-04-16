@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Form from '../form/Form.component';
-import { postProdutc, getByProdutc } from '../Produtc.service';
+import { postProdutc, getByProdutc, putProdutc } from '../Produtc.service';
 import { useSnackbar } from '../../../context/Snackbar';
 import Produtc from '../interfaces/Produtc';
 import { useParams } from "react-router";
@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import ParamTypes from '../../../core/interfaces/ParamTypes';
 import { INITIAL_VALUES } from '../utils/INITIAL_VALUES';
 import Progress from '../../../component/progress/Progress.component';
+import { valueMonetary } from '../../../utils/format/FormatMonetary';
 
 export default function Register() {
 
@@ -30,13 +31,13 @@ export default function Register() {
     }, [id]);
 
     const onSubmit = async (data: Produtc) => {
-        postProdutc(data).then((res) => {
-            console.log(res)
-            setSnackbar({ msg: `Comunicado foi ${id ? 'atualizada' : 'cadastrada'} com sucesso!`, type: 'success' });
-            history.push(`/comunicado-corporativo`);
-        }).catch((error) => {
-            setSnackbar({ msg: `Erro ao ${id ? 'atualizar' : 'cadastrar'} comunicado!`, type: 'error' });
-        });
+        try {
+            await (id ? putProdutc(data) : postProdutc(data));
+            setSnackbar({ msg: `Produto foi ${id ? 'atualizada' : 'cadastrada'} com sucesso!`, type: 'success' });
+            history.push(`/produto`);
+        } catch (error) {
+            setSnackbar({ msg: `Erro ao ${id ? 'atualizar' : 'cadastrar'} produto!`, type: 'error' });
+        }
     };
 
     if (id && request) {

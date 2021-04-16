@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useSnackbar } from '../../../context/Snackbar';
 import { getUser } from '../../auth/auth';
 import { Response } from '../../auth/Response';
 
@@ -15,7 +14,6 @@ let instance = axios.create({
 instance.interceptors.request.use(
     async (config) => {
         const user: Response = getUser();
-        console.log(user)
         if (user && user.token) {
             config.headers.Authorization = `Bearer ${user.token}`;
         }

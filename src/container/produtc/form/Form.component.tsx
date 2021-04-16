@@ -7,6 +7,7 @@ import CorporateCommunicated from '../interfaces/Produtc';
 import { FormInterface } from '../interfaces/Form';
 import { Validate } from '../utils/Validate';
 import ButtonForm from '../../../component/buttton/ButtonForm.component';
+import { valueMonetary } from '../../../utils/format/FormatMonetary';
 
 export default function FormComponent({ handleSubmitForm, initialValues, request }: FormInterface) {
 
@@ -29,6 +30,28 @@ export default function FormComponent({ handleSubmitForm, initialValues, request
                         onChange={handleChange('name')}
                         error={(values.name.length < 3) && !!errors.name}
                         helperText={(values.name.length < 3) && errors.name}
+                    />
+                </Grid>
+                <Grid item xs={12} >
+                    <FormInput
+                        label='Valor do produto'
+                        name='value'
+                        value={values.value}
+                        placeholder="00,00"
+                        inputProps={{ maxLength: 11 }}
+                        onChange={handleChange('value')}
+                        error={!!errors.value}
+                        helperText={errors.value}
+                    />
+                </Grid>
+                <Grid item xs={12} >
+                    <FormInput
+                        label='Quantidade do produto'
+                        name='qtd'
+                        value={values.qtd}
+                        onChange={handleChange('qtd')}
+                        error={!!errors.qtd}
+                        helperText={errors.qtd}
                     />
                 </Grid>
                 <ButtonForm link='/produto' title="Salvar" />

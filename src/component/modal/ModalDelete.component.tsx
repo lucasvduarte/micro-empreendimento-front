@@ -18,7 +18,7 @@ export default function ModalDelete({ open, title, handleClick, onClickSubmit }:
     return (
         <Modal open={open} handleClick={handleClick} >
             <Span>{title.toLocaleUpperCase()}</Span>
-            <GridComponent margin="20px 0px 0px 0px">
+            <GridComponent margin="20px 0px 0px 0px" justify="flex-end">
                 <Container margin="0px 20px 0px 0px">
                     <Button type="button" title='Não' onClick={handleClick} color="secondary" />
                 </Container>
