@@ -26,6 +26,14 @@ export const Title = styled(({ ...props }) => (
     }
 `;
 
+export const TitleMenu = styled(({ ...props }) => (
+    <Typography variant="h6"  {...props} />
+))`
+    && {
+        margin-right: 20px; 
+    }
+`;
+
 export const TitleClose = styled(({ ...props }) => (
     <Typography variant="h6"  {...props} />
 ))`

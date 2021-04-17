@@ -1,8 +1,6 @@
 import { AppBarSteled } from './AppBar';
-import { Title, TitleClose } from './AppBar';
+import { Title, TitleClose, TitleMenu } from './AppBar';
 import GridComponent from '../grid/GridComponent.component';
-import { Img } from '../img/Img';
-import logo from "../../assets/logo/logoMinhaCenco.png";
 import Toolbar from '@material-ui/core/Toolbar';
 import { LinkRouter } from '../link/Link';
 import { logout, getUser } from '../../core/auth/auth';
@@ -13,20 +11,25 @@ export default function MenuAppBar() {
     return (
         <AppBarSteled>
             <Toolbar>
-                <Img src={logo} width={34} height={34} />
-                <Title>
+                <TitleMenu>
+                    <LinkRouter to="/produto"  >
+                        Produto
+                    </LinkRouter>
+                </TitleMenu>
+                <TitleMenu>
+                    <LinkRouter to="/venda" >
+                        Venda
+                    </LinkRouter>
+                </TitleMenu>
+                <TitleMenu>
+                    <LinkRouter to="/financeiro" >
+                        Financeiro
+                    </LinkRouter>
+                </TitleMenu>
+                <Title> </Title>
+                <TitleMenu>
                     {`Bem vindo, ${name[0]} ${name[1]}!`}
-                </Title>
-                <LinkRouter to="/produto"  >
-                    <GridComponent>
-                        <TitleClose>Produto</TitleClose>
-                    </GridComponent>
-                </LinkRouter>
-                <LinkRouter to="/venda" >
-                    <GridComponent>
-                        <TitleClose>Venda</TitleClose>
-                    </GridComponent>
-                </LinkRouter>
+                </TitleMenu>
                 <LinkRouter to="/login" onClick={logout}>
                     <GridComponent>
                         <TitleClose>Sair</TitleClose>

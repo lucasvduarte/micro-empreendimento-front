@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import Form from '../form/Form.component';
-import { postProdutc, getByProdutc, putProdutc } from '../Produtc.service';
+import { postSale, getBySale, putSale } from '../Sale.service';
 import { useSnackbar } from '../../../context/Snackbar';
-import Produtc from '../interfaces/Produtc';
+import Sale from '../interfaces/Sale';
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
 import ParamTypes from '../../../core/interfaces/ParamTypes';
@@ -13,14 +13,14 @@ export default function Register() {
 
     let history = useHistory();
     const { setSnackbar } = useSnackbar();
-    const [produtc, setProdutc] = useState<Produtc>(INITIAL_VALUES);
+    const [sale, setSale] = useState<Sale>(INITIAL_VALUES);
     const [request, setRequest] = useState<boolean>(true);
     let { id } = useParams<ParamTypes>();
 
     useEffect(() => {
         if (id) {
-            getByProdutc(id).then(res => {
-                setProdutc(res.data);
+            getBySale(id).then(res => {
+                setSale(res.data);
             }).catch((error) => {
                 console.log('Erro ao consultar comunicado!', error);
             }).finally(() => {
@@ -29,11 +29,11 @@ export default function Register() {
         }
     }, [id]);
 
-    const onSubmit = async (data: Produtc) => {
+    const onSubmit = async (data: Sale) => {
         try {
-            await (id ? putProdutc(data) : postProdutc(data));
+            await (id ? putSale(data) : postSale(data));
             setSnackbar({ msg: `Produto foi ${id ? 'atualizada' : 'cadastrada'} com sucesso!`, type: 'success' });
-            history.push(`/produto`);
+            history.push(`/venda`);
         } catch (error) {
             setSnackbar({ msg: `Erro ao ${id ? 'atualizar' : 'cadastrar'} produto!`, type: 'error' });
         }
@@ -44,6 +44,6 @@ export default function Register() {
     }
 
     return (
-        <Form handleSubmitForm={onSubmit} initialValues={produtc} request={id ? request : false} />
+        <Form handleSubmitForm={onSubmit} initialValues={sale} request={id ? request : false} />
     );
 }
