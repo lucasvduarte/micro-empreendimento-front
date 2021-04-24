@@ -9,7 +9,7 @@ interface Props {
 const FontBoldComponent = ({ subTitle, title }: Props) => {
 
     return (
-        <Container margin="10px 0px" >
+        <Container >
             <FontBold>{title?.toLocaleUpperCase()}</FontBold>
             {subTitle?.toLocaleUpperCase()}
         </Container>

@@ -37,11 +37,15 @@ export const FormSelect = styled(({ ...props }) => (
             name: 'age',
             id: 'age-native-simple',
         }}
-        {...props} />
+
+        {...props}
+    />
 ))` 
     &&{  
         background-color: #FFFFFF;
-        border-radius: 5px; 
+        border-radius: 10px;
+        height: 40px;
+        padding: 0px;
     }
 `;
 
@@ -61,6 +65,7 @@ export const DatePicker = styled(({ ...props }) => (
         autoOk
         fullWidth
         inputVariant="outlined"
+        id='input-date'
         format="dd/MM/yyyy"
         invalidLabel="Data Inválida"
         invalidDateMessage="Data Inválida"

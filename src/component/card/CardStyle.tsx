@@ -14,22 +14,27 @@ export const CardStyled = styled(({ color, padding, ...props }) => (
     <Card {...props} />
 ))`
     background-color: ${props => props.color || '#FFFFFF'} ;
-    padding: ${props => `${props.padding || '0px'}`}; 
+    padding: ${props => `${props.padding || '0px'}`};
+    min-height: 120px;
     && { 
-        border-radius: 12px; 
+        border-radius: 12px;
+        @media (max-width: 600px) {
+            padding: 0px 1px 10px 1px;
+        }
     }
 `;
 
 export const Container = styled.div` 
     max-width: ${(props: ContainerInterface) => `${props.width || '420px'}`}; 
-    margin: ${(props: ContainerInterface) => `${props.margin || '0px'}`};
+    margin:  0px 0px 20px 0px;
     transition: 0.2s ease-in;
-    @media (max-width: 460px) { 
-        margin-bottom: 10px;
+    @media (max-width: 600px) { 
+        margin-bottom: 0px; 
         transition: 0.2s ease-in;
     }
 `;
 
 export const TitleCard = styled(Title)`
-    margin: 25px 0px; 
+    margin: 25px 0px;
+    text-align: center;
 `;

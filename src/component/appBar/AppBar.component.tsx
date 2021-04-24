@@ -11,9 +11,15 @@ export default function MenuAppBar() {
     return (
         <AppBarSteled>
             <Toolbar>
+
                 <TitleMenu>
-                    <LinkRouter to="/produto"  >
-                        Produto
+                    <LinkRouter to="/" >
+                        Inicio
+                    </LinkRouter>
+                </TitleMenu>
+                <TitleMenu>
+                    <LinkRouter to="/estoque"  >
+                        Estoque
                     </LinkRouter>
                 </TitleMenu>
                 <TitleMenu>
@@ -21,14 +27,9 @@ export default function MenuAppBar() {
                         Venda
                     </LinkRouter>
                 </TitleMenu>
-                <TitleMenu>
-                    <LinkRouter to="/financeiro" >
-                        Financeiro
-                    </LinkRouter>
-                </TitleMenu>
                 <Title> </Title>
                 <TitleMenu>
-                    {`Bem vindo, ${name[0]} ${name[1]}!`}
+                    {`${name[0]} ${name[1][0]}`}
                 </TitleMenu>
                 <LinkRouter to="/login" onClick={logout}>
                     <GridComponent>

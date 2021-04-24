@@ -19,6 +19,15 @@ export const FormatTimeZone = (date: string | Date | undefined) => {
     return date;
 }
 
+export const FormatDefaultDate = (date: Date | string) => {
+    date = new Date(date);
+    let dateAux: Date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    let day = dateAux.getDate() < 10 ? `0${dateAux.getDate()}` : dateAux.getDate();
+    let month = dateAux.getMonth() + 1 < 10 ? `0${dateAux.getMonth() + 1}` : dateAux.getMonth() + 1;
+    console.log(day)
+    return `${dateAux.getFullYear()}-${month}-${day}`
+}
+
 export const FormatDateHours = (date?: string | Date) => {
     if (!date) {
         return '';

@@ -6,6 +6,7 @@ interface ContainerInterface {
 
 export const Container = styled.div`  
     margin: ${(props: ContainerInterface) => `${props.margin || '0px'}`};
+    transition: 0.2s ease-in;
 `;
 
 interface CenterInterface {

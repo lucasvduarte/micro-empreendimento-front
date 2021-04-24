@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { CardStyled, Container, TitleCard } from './CardStyle';
+import GridComponent from '../grid/GridComponent.component';
 
 interface Props {
     children?: ReactNode;
@@ -7,15 +8,16 @@ interface Props {
     width?: string;
     padding?: string;
     title?: string;
-    margin?: string;
 }
 
-const CardComponent = ({ children, color, width, padding, title, margin }: Props) => {
+const CardComponent = ({ children, color, width, padding, title }: Props) => {
     return (
-        <Container width={width} margin={margin} >
+        <Container width={width} >
             <CardStyled color={color} padding={padding} >
-                {title && <TitleCard>{title.toLocaleUpperCase()}</TitleCard>}
-                {children}
+                <GridComponent justify="center" direction="column">
+                    {title && <TitleCard>{title.toLocaleUpperCase()}</TitleCard>}
+                    <div style={{ marginTop: -10 }}> {children} </div>
+                </GridComponent>
             </CardStyled>
         </Container>
     )
