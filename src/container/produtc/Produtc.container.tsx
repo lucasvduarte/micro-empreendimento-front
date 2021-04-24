@@ -6,10 +6,10 @@ const Routes = () => {
 
     return (
         <Switch>
-            <Route exact path="/produto" component={CorporateCommunicated} />
-            <Route exact path="/produto/novo-produto" component={Register} />
-            <Route exact path="/produto/view-produto/:id" component={() => <Register />} />
-            <Route exact path="/produto/editar-produto/:id" component={() => <Register />} />
+            <Route exact path="/estoque" component={CorporateCommunicated} />
+            <Route exact path="/estoque/novo-produto" component={Register} />
+            <Route exact path="/estoque/view-produto/:id" component={() => <Register />} />
+            <Route exact path="/estoque/editar-produto/:id" component={() => <Register />} />
             <Route component={() => <>NotFoundRedirect</>} />
         </Switch>
     );

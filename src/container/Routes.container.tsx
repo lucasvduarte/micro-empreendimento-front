@@ -8,7 +8,7 @@ const Routes = () => {
         <Switch>
             <Route exact path="/" component={() => <Dashboard />} />
             <Route path="/dashboard" component={() => <Dashboard />} />
-            <Route path="/produto" component={() => <Produtc />} />
+            <Route path="/estoque" component={() => <Produtc />} />
             <Route path="/venda" component={() => <Sale />} />
             <Route component={() => <>NotFoundRedirect</>} />
         </Switch>

@@ -38,7 +38,7 @@ export default function ProdutcComponent() {
 
     const handleClickAction = (action: Action, produtc: Produtc) => {
         if (action === ACTION_EDIT) {
-            return history.push(`/produto/editar-produto/${produtc._id}`);
+            return history.push(`/estoque/editar-produto/${produtc._id}`);
         }
         if (action === ACTION_DELETE) {
             return handleClickModalDelete(produtc._id);
@@ -59,7 +59,7 @@ export default function ProdutcComponent() {
     return (
         <>
             <GridComponent>
-                <ButtonLink title="Adicionar produto" link='produto/novo-produto' margin="0px 15px 0px 0px" />
+                <ButtonLink title="Adicionar produto" link='estoque/novo-produto' margin="0px 15px 0px 0px" />
             </GridComponent>
 
             <ModalDelete open={!!open} handleClick={() => handleClickModalDelete('')} onClickSubmit={handleClickDelete} title="Confirma a exclusão desse produto?" />

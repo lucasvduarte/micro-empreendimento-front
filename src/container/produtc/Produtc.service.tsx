@@ -1,7 +1,7 @@
 import { http } from "../../core/http/api/Http.interceptor";
 import Produtc from './interfaces/Produtc';
 
-const URL: string = '/produto';
+const URL: string = '/estoque';
 
 export const getProdutc = () => {
     return http.get<Produtc[]>(`${URL}`);

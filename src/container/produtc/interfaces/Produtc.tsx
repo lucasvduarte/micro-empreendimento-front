@@ -3,7 +3,6 @@ export default interface Produtc {
     name: string;
     value: string;
     qtd: number | string;
-    isUnity?: boolean;
     user?: any;
     createAt?: string | Date;
 }

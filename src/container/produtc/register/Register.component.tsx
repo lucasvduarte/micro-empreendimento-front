@@ -33,9 +33,9 @@ export default function Register() {
         try {
             await (id ? putProdutc(data) : postProdutc(data));
             setSnackbar({ msg: `Produto foi ${id ? 'atualizada' : 'cadastrada'} com sucesso!`, type: 'success' });
-            history.push(`/produto`);
+            history.push(`/estoque`);
         } catch (error) {
-            setSnackbar({ msg: `Erro ao ${id ? 'atualizar' : 'cadastrar'} produto!`, type: 'error' });
+            setSnackbar({ msg: error.response.data.error, type: 'error' });
         }
     };
 

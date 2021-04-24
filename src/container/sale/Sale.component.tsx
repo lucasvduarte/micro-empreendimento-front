@@ -62,7 +62,7 @@ export default function SaleComponent() {
                 <ButtonLink title="Adicionar venda" link='venda/nova-venda' margin="0px 15px 0px 0px" />
             </GridComponent>
 
-            <ModalDelete open={!!open} handleClick={() => handleClickModalDelete('')} onClickSubmit={handleClickDelete} title="Confirma a exclusão desse venda?" />
+            <ModalDelete open={!!open} handleClick={() => handleClickModalDelete('')} onClickSubmit={handleClickDelete} title="Confirma a exclusão dessa venda?" />
 
             <GridComponent margin="30px 0px 0px 0px">
                 <Table

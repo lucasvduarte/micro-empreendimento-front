@@ -6,12 +6,15 @@ import { useSnackbar } from '../../context/Snackbar';
 import { Center } from '../../component/container/Container';
 import { signIn } from '../../core/auth/auth';
 import { authService } from './Login.service';
+import { LinkRouter } from '../../component/link/Link';
+import GridComponent from '../../component/grid/GridComponent.component';
+import Typography from '@material-ui/core/Typography';
 
 export default function LoginComponent() {
 
     let history = useHistory();
     const [request, setRequest] = useState(false);
-    const { snackbar, setSnackbar } = useSnackbar();
+    const { setSnackbar } = useSnackbar();
 
     const onSubmit = async (user: Login) => {
         setRequest(true);
@@ -20,7 +23,7 @@ export default function LoginComponent() {
             history.push("/");
         }).catch(error => {
             console.log(error)
-            setSnackbar({ ...snackbar, msg: 'Falha na Autenticação!', type: 'error' });
+            setSnackbar({ msg: 'Falha na Autenticação!', type: 'error' });
         }).finally(() => {
             setRequest(false);
         });
@@ -29,6 +32,13 @@ export default function LoginComponent() {
     return (
         <Center height={320}>
             <FormLogin handleSubmitForm={onSubmit} request={request} />
+            <br />
+            <br />
+            <GridComponent justify="center" alignItems="center" >
+                <LinkRouter to='/cadastrar' color="#2B6CB0">
+                    Não possui login?   <Typography variant="h6">Cadastrar</Typography>
+                </LinkRouter>
+            </GridComponent>
         </Center>
     );
 }

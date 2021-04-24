@@ -32,10 +32,10 @@ export default function Register() {
     const onSubmit = async (data: Sale) => {
         try {
             await (id ? putSale(data) : postSale(data));
-            setSnackbar({ msg: `Produto foi ${id ? 'atualizada' : 'cadastrada'} com sucesso!`, type: 'success' });
+            setSnackbar({ msg: `Venda foi ${id ? 'atualizada' : 'cadastrada'} com sucesso!`, type: 'success' });
             history.push(`/venda`);
         } catch (error) {
-            setSnackbar({ msg: `Erro ao ${id ? 'atualizar' : 'cadastrar'} produto!`, type: 'error' });
+            setSnackbar({ msg: error.response.data.error, type: 'error' });
         }
     };
 
