@@ -8,7 +8,7 @@ axios.defaults.timeout = 20000;
 axios.defaults.timeoutErrorMessage = TIMEOUT_ERROR_MESSAGE;
 
 let instance = axios.create({
-    baseURL: 'http://localhost:4000',
+    baseURL: process.env.REACT_APP_API_URL,
 });
 
 instance.interceptors.request.use(
@@ -29,14 +29,6 @@ instance.interceptors.response.use(
         return response;
     },
     (error) => {
-        /*   const { snackbar, setSnackbar } = useSnackbar();
-  
-          if (error.message === TIMEOUT_ERROR_MESSAGE || error.code === 'ECONNABORTED') {
-              setSnackbar({ ...snackbar, msg: "Tempo de requisição limite excedido!", type: 'error' });
-  
-          } else if (error) {
-              setSnackbar({ ...snackbar, msg: "Erro Interno. Por favor, contate o administrador!", type: 'error' });
-          } */
 
         return Promise.reject(error);
     }
