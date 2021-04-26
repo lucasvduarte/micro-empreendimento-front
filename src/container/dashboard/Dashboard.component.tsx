@@ -50,7 +50,7 @@ export default function Dashboard() {
             </GridComponent>
             <GridComponent justify="flex-start" alignItems="center" spacing={1} >
                 <Grid item xs={6} sm={4} md={3}>
-                    <Card title="Produtos adicionados " width='300px' padding="0px 10px 20px 10px">
+                    <Card title="Produtos adicionados" width='300px' padding="0px 10px 20px 10px">
                         <FontBoldComponent title={String(data.totalProducts)} />
                     </Card>
                 </Grid>

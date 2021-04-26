@@ -4,14 +4,12 @@ import { postSale, getBySale, putSale } from '../Sale.service';
 import { useSnackbar } from '../../../context/Snackbar';
 import Sale from '../interfaces/Sale';
 import { useParams } from "react-router";
-import { useHistory } from "react-router-dom";
 import ParamTypes from '../../../core/interfaces/ParamTypes';
 import { INITIAL_VALUES } from '../utils/INITIAL_VALUES';
 import Progress from '../../../component/progress/Progress.component';
 
 export default function Register() {
 
-    let history = useHistory();
     const { setSnackbar } = useSnackbar();
     const [sale, setSale] = useState<Sale>(INITIAL_VALUES);
     const [request, setRequest] = useState<boolean>(true);
@@ -33,7 +31,6 @@ export default function Register() {
         try {
             await (id ? putSale(data) : postSale(data));
             setSnackbar({ msg: `Venda foi ${id ? 'atualizada' : 'cadastrada'} com sucesso!`, type: 'success' });
-            history.push(`/venda`);
         } catch (error) {
             setSnackbar({ msg: error.response.data.error, type: 'error' });
         }

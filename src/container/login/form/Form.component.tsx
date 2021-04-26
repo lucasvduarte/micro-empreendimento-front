@@ -19,32 +19,26 @@ export default function Form({ handleSubmitForm, request }: FormProps) {
     return (
         <form onSubmit={handleSubmit}>
             <GridComponent justify="center" alignItems="center" spacing={2} >
-                <Grid item xs={12} sm={12} md={6}>
-                    <GridComponent justify="center" alignItems="center" spacing={2} >
-                        <Grid item xs={12} sm={12} >
-                            <FormInput
-                                label='Email'
-                                name="email"
-                                type="email"
-                                onChange={handleChange}
-                                required
-                            // error={touched.user && !values.user}
-                            //  helperText={(touched.user && !values.user) && 'Campo não pode ficar vazio'}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={12} >
-                            <FormInput
-                                label='Senha'
-                                type="password"
-                                name="password"
-                                onChange={handleChange}
-                                required
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={12} >
-                            <Button title="Entrar" fullWidth size="medium" disabled={isSubmitting && request} />
-                        </Grid>
-                    </GridComponent>
+                <Grid item xs={12}  >
+                    <FormInput
+                        label='Email'
+                        name="email"
+                        type="email"
+                        onChange={handleChange}
+                        required
+                    />
+                </Grid>
+                <Grid item xs={12}  >
+                    <FormInput
+                        label='Senha'
+                        type="password"
+                        name="password"
+                        onChange={handleChange}
+                        required
+                    />
+                </Grid>
+                <Grid item xs={12}  >
+                    <Button title="Entrar" fullWidth size="medium" disabled={isSubmitting && request} />
                 </Grid>
             </GridComponent>
         </form>

@@ -5,7 +5,8 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0px;
     font-family: 'Roboto', 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; 
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f7f7ff;
   }
 
   code {

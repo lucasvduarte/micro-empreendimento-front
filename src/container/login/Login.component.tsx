@@ -8,7 +8,7 @@ import { signIn } from '../../core/auth/auth';
 import { authService } from './Login.service';
 import { LinkRouter } from '../../component/link/Link';
 import GridComponent from '../../component/grid/GridComponent.component';
-import Typography from '@material-ui/core/Typography';
+import Card from '../../component/card/Card.component';
 
 export default function LoginComponent() {
 
@@ -30,13 +30,16 @@ export default function LoginComponent() {
     };
 
     return (
-        <Center height={320}>
-            <FormLogin handleSubmitForm={onSubmit} request={request} />
-            <br />
-            <br />
-            <GridComponent justify="center" alignItems="center" >
+        <Center height={310} >
+            <GridComponent justify="center" alignItems="center" direction="column" >
+                <Card>
+                    <div style={{ padding: 40 }}>
+                        <FormLogin handleSubmitForm={onSubmit} request={request} />
+                    </div>
+                </Card>
+                <br />
                 <LinkRouter to='/cadastrar' color="#2B6CB0">
-                    Não possui login?   <Typography variant="h6">Cadastrar</Typography>
+                    Cadastra-se agora, crie sua conta GRATUITA
                 </LinkRouter>
             </GridComponent>
         </Center>
