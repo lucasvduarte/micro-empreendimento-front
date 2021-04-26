@@ -1,3 +1,4 @@
+import { valueMonetary } from '../../../../../utils/format/FormatMonetary';
 import { HeadCell } from '../../../interfaces/TableInterface';
 import { FormatDate } from './functions/FormatDate';
 import ViewAttribute from './functions/ViewAttribute';
@@ -14,6 +15,10 @@ const formatValues = (keys: HeadCell, value: string, row: any) => {
 
     if (keys.viewAttributeBoolean) {
         value = ViewAttributeBoolean(row[keys.id], keys.viewAttributeBoolean);
+    }
+
+    if (keys.viewMonetary) {
+        value = valueMonetary(row[keys.id]);
     }
 
     return value;

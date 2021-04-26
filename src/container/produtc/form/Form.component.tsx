@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react';
 import { FormInput } from '../../../component/input/InputStyle';
 import GridComponent from '../../../component/grid/GridComponent.component';
 import { useFormik } from 'formik';
@@ -7,14 +8,16 @@ import CorporateCommunicated from '../interfaces/Produtc';
 import { FormInterface } from '../interfaces/Form';
 import { Validate } from '../utils/Validate';
 import ButtonForm from '../../../component/buttton/ButtonForm.component';
+import { decimalEditorMonetary } from '../../../utils/format/FormatMonetary';
 
 export default function FormComponent({ handleSubmitForm, initialValues, request }: FormInterface) {
 
-    const { handleSubmit, handleChange, values, errors, touched } = useFormik<CorporateCommunicated>({
+    const { handleSubmit, handleChange, values, errors, touched, setFieldValue } = useFormik<CorporateCommunicated>({
         initialValues: initialValues,
         validationSchema: Validate(),
         onSubmit: values => {
-            handleSubmitForm(values)
+            values.value = String(values.value).includes(',') ? (values.value.replace(',', '')) : values.value;
+            handleSubmitForm(values);
         },
     });
 
@@ -35,10 +38,10 @@ export default function FormComponent({ handleSubmitForm, initialValues, request
                     <FormInput
                         label='Valor do produto'
                         name='value'
-                        value={values.value}
-                        placeholder="00,00"
+                        value={decimalEditorMonetary(values.value)}
+                        placeholder="0.00"
                         inputProps={{ maxLength: 11 }}
-                        onChange={handleChange('value')}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => setFieldValue('value', decimalEditorMonetary(e.target.value))}
                         error={!!errors.value && touched.value}
                         helperText={touched.value && errors.value}
                     />

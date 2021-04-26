@@ -14,6 +14,7 @@ export interface HeadCell {
     format?: Array<'date'>;
     viewAttribute?: string;
     viewAttributeBoolean?: viewAttributeBoolean;
+    viewMonetary?: boolean;
 }
 export const ACTION_EDIT_SUBMIT = 'ACTION_EDIT_SUBMIT';
 export const ACTION_EDIT = 'ACTION_EDIT';
