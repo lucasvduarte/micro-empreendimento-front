@@ -28,8 +28,8 @@ export default function FormComponent({ handleSubmitForm, initialValues, request
 
     const { handleSubmit, handleChange, values, errors, touched, setFieldValue, isSubmitting } = useFormik<Sale>({
         initialValues: initialValues,
-        validationSchema: Validate(),
         onSubmit: values => {
+            console.log('values')
             values.value = String(values.value).includes(',') ? (values.value.replace(',', '')) : values.value;
             handleSubmitForm(values)
         },
@@ -43,9 +43,9 @@ export default function FormComponent({ handleSubmitForm, initialValues, request
                         fullWidth
                         noOptionsText='Não encontrado um produto com esse nome'
                         onChange={(_event: React.ChangeEvent<any>, produtc: Produtc | null) => {
-                            setFieldValue('name', produtc?.name)
+                            setFieldValue('product', produtc)
                         }}
-                        value={values}
+                        value={values.product}
                         id="product-autocomplete"
                         options={produtcs}
                         getOptionLabel={(produtc: Produtc) => produtc.name}
