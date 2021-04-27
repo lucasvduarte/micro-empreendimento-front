@@ -4,6 +4,6 @@ export const HEAD_CELL: Array<HeadCell> = [
     { id: 'product', label: 'Name', viewAttribute: 'name' },
     { id: 'createAt', label: 'Data da Venda', format: ['date'] },
     { id: 'qtd', label: 'Quantidade' },
-    { id: 'value', label: 'Valor', viewMonetary: true },
+    { id: 'value', label: 'Valor por unidade', viewMonetary: true },
     { id: ACTION, label: 'Ação' },
 ];

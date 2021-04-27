@@ -1,4 +1,3 @@
-import Produtc from "../../produtc/interfaces/Produtc";
 
 export default interface Sale {
     _id?: string;

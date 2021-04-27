@@ -55,7 +55,7 @@ export default function FormComponent({ handleSubmitForm, initialValues, request
                 </Grid>
                 <Grid item xs={12} >
                     <FormInput
-                        label='Valor do produto'
+                        label={`Valor da venda produto`}
                         name='value'
                         value={decimalEditorMonetary(values.value)}
                         placeholder="0.00"
@@ -67,7 +67,7 @@ export default function FormComponent({ handleSubmitForm, initialValues, request
                 </Grid>
                 <Grid item xs={12} >
                     <FormInput
-                        label='Quantidade do produto'
+                        label={`Quantidade do produto`}
                         name='qtd'
                         type='number'
                         value={values.qtd}
