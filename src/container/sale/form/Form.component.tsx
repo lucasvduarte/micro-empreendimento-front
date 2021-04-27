@@ -76,7 +76,9 @@ export default function FormComponent({ handleSubmitForm, initialValues, request
                         helperText={touched.qtd && errors.qtd}
                     />
                 </Grid>
-                <ButtonForm link='/venda' title="Salvar" disabled={isSubmitting && request} />
+                <Grid item xs={12}  >
+                    <ButtonForm link='/venda' title="Salvar" disabled={isSubmitting && request} />
+                </Grid>
             </GridComponent>
 
         </Form>
