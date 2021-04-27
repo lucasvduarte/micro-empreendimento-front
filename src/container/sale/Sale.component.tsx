@@ -3,13 +3,12 @@ import Sale from './interfaces/Sale';
 import { useHistory } from "react-router-dom";
 import { Action, ACTION_EDIT, ACTION_DELETE } from '../../component/table/interfaces/TableInterface';
 import { getSale, deleteSale } from './Sale.service';
-import GridComponent from '../../component/grid/GridComponent.component';
 import Table from '../../component/table/Table.component';
-import ButtonLink from '../../component/buttton/ButtonLink.component';
 import { useSnackbar } from '../../context/Snackbar';
 import { HEAD_CELL } from './utils/HEAD_CELL';
 import useModal from '../../hooks/useModal';
 import ModalDelete from '../../component/modal/ModalDelete.component';
+import Hearder from '../../component/header/HeaderRegister.component';
 
 export default function SaleComponent() {
 
@@ -24,7 +23,7 @@ export default function SaleComponent() {
             if (res.data) {
                 setSale(res.data);
             }
-        }).catch((erro) => {
+        }).catch((_error) => {
             setSnackbar({ msg: "Erro ao consultar vendas!", type: 'error' });
         }).finally(function () {
             setRequest(false)
@@ -57,22 +56,17 @@ export default function SaleComponent() {
     };
 
     return (
-        <>
-            <GridComponent>
-                <ButtonLink title="Adicionar venda" link='venda/nova-venda' margin="0px 15px 0px 0px" />
-            </GridComponent>
+        <Hearder name="Vendas" titleButton="Adicionar venda" link='venda/nova-venda' button >
 
             <ModalDelete open={!!open} handleClick={() => handleClickModalDelete('')} onClickSubmit={handleClickDelete} title="Confirma a exclusão dessa venda?" />
 
-            <GridComponent margin="30px 0px 0px 0px">
-                <Table
-                    request={request}
-                    data={sale}
-                    headCells={HEAD_CELL}
-                    handleClickAction={handleClickAction}
-                    noActionView
-                />
-            </GridComponent>
-        </>
+            <Table
+                request={request}
+                data={sale}
+                headCells={HEAD_CELL}
+                handleClickAction={handleClickAction}
+                noActionView
+            />
+        </Hearder>
     );
 }

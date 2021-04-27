@@ -7,7 +7,7 @@ export default function MenuC() {
     return (
         <>
             <AppBar />
-            <Container margin="2%">
+            <Container margin="3%">
                 <Routes />
             </Container>
         </>

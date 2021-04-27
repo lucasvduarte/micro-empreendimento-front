@@ -3,13 +3,12 @@ import Produtc from './interfaces/Produtc';
 import { useHistory } from "react-router-dom";
 import { Action, ACTION_EDIT, ACTION_DELETE } from '../../component/table/interfaces/TableInterface';
 import { getProdutc, deleteProdutc } from './Produtc.service';
-import GridComponent from '../../component/grid/GridComponent.component';
 import Table from '../../component/table/Table.component';
-import ButtonLink from '../../component/buttton/ButtonLink.component';
 import { useSnackbar } from '../../context/Snackbar';
 import { HEAD_CELL } from './utils/HEAD_CELL';
 import useModal from '../../hooks/useModal';
 import ModalDelete from '../../component/modal/ModalDelete.component';
+import Hearder from '../../component/header/HeaderRegister.component';
 
 export default function ProdutcComponent() {
 
@@ -57,22 +56,16 @@ export default function ProdutcComponent() {
     };
 
     return (
-        <>
-            <GridComponent>
-                <ButtonLink title="Adicionar produto" link='estoque/novo-produto' margin="0px 15px 0px 0px" />
-            </GridComponent>
-
+        <Hearder name="Produtos" titleButton="Adicionar produto" link='estoque/novo-produto' button >
             <ModalDelete open={!!open} handleClick={() => handleClickModalDelete('')} onClickSubmit={handleClickDelete} title="Confirma a exclusão desse produto?" />
 
-            <GridComponent margin="30px 0px 0px 0px">
-                <Table
-                    request={request}
-                    data={produtc}
-                    headCells={HEAD_CELL}
-                    handleClickAction={handleClickAction}
-                    noActionView
-                />
-            </GridComponent>
-        </>
+            <Table
+                request={request}
+                data={produtc}
+                headCells={HEAD_CELL}
+                handleClickAction={handleClickAction}
+                noActionView
+            />
+        </Hearder>
     );
 }

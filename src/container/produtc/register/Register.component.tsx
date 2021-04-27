@@ -7,6 +7,7 @@ import { useParams } from "react-router";
 import ParamTypes from '../../../core/interfaces/ParamTypes';
 import { INITIAL_VALUES } from '../utils/INITIAL_VALUES';
 import Progress from '../../../component/progress/Progress.component';
+import Hearder from '../../../component/header/HeaderRegister.component';
 
 export default function Register() {
 
@@ -44,6 +45,8 @@ export default function Register() {
     }
 
     return (
-        <Form handleSubmitForm={onSubmit} initialValues={produtc} request={reload} />
+        <Hearder page={`Estoque > ${id ? 'Atualizar' : 'Adiconar'} produto`} name="Produto" >
+            <Form handleSubmitForm={onSubmit} initialValues={produtc} request={reload} />
+        </Hearder>
     );
 }
