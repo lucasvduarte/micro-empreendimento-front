@@ -9,6 +9,7 @@ import { authService } from './Login.service';
 import { LinkRouter } from '../../component/link/Link';
 import GridComponent from '../../component/grid/GridComponent.component';
 import Card from '../../component/card/Card.component';
+import { INITIAL_VALUES } from './utils/INITIAL_VALUES';
 
 export default function LoginComponent() {
 
@@ -34,7 +35,7 @@ export default function LoginComponent() {
             <GridComponent justify="center" alignItems="center" direction="column" >
                 <Card>
                     <div style={{ padding: 40 }}>
-                        <FormLogin handleSubmitForm={onSubmit} request={request} />
+                        <FormLogin initialValues={INITIAL_VALUES} handleSubmitForm={onSubmit} request={request} />
                     </div>
                 </Card>
                 <br />

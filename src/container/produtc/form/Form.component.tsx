@@ -4,15 +4,15 @@ import GridComponent from '../../../component/grid/GridComponent.component';
 import { useFormik } from 'formik';
 import Grid from '@material-ui/core/Grid';
 import { Form } from '../../../component/form/Form';
-import CorporateCommunicated from '../interfaces/Produtc';
-import { FormInterface } from '../interfaces/Form';
+import Produtc from '../interfaces/Produtc';
+import { FormInterface } from '../../../core/interfaces/form/Form';
 import { Validate } from '../utils/Validate';
 import ButtonForm from '../../../component/buttton/ButtonForm.component';
 import { decimalEditorMonetary } from '../../../utils/format/FormatMonetary';
 
-export default function FormComponent({ handleSubmitForm, initialValues, request }: FormInterface) {
+export default function FormComponent({ handleSubmitForm, initialValues, request }: FormInterface<Produtc>) {
 
-    const { handleSubmit, handleChange, values, errors, touched, setFieldValue } = useFormik<CorporateCommunicated>({
+    const { handleSubmit, handleChange, values, errors, touched, setFieldValue, isSubmitting } = useFormik<Produtc>({
         initialValues: initialValues,
         validationSchema: Validate(),
         onSubmit: values => {
@@ -57,7 +57,7 @@ export default function FormComponent({ handleSubmitForm, initialValues, request
                         helperText={touched.qtd && errors.qtd}
                     />
                 </Grid>
-                <ButtonForm link='/estoque' title="Salvar" />
+                <ButtonForm link='/estoque' title="Salvar" disabled={isSubmitting && request} />
             </GridComponent>
 
         </Form>

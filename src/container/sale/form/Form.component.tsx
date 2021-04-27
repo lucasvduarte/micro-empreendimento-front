@@ -5,16 +5,16 @@ import GridComponent from '../../../component/grid/GridComponent.component';
 import { useFormik } from 'formik';
 import Grid from '@material-ui/core/Grid';
 import { Form } from '../../../component/form/Form';
-import CorporateCommunicated from '../interfaces/Sale';
-import { FormInterface } from '../interfaces/Form';
+import Sale from '../interfaces/Sale';
 import { Validate } from '../utils/Validate';
 import ButtonForm from '../../../component/buttton/ButtonForm.component';
 import Produtc from '../../produtc/interfaces/Produtc';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { getProdutc } from '../../produtc/Produtc.service';
 import { decimalEditorMonetary } from '../../../utils/format/FormatMonetary';
+import { FormInterface } from '../../../core/interfaces/form/Form';
 
-export default function FormComponent({ handleSubmitForm, initialValues, request }: FormInterface) {
+export default function FormComponent({ handleSubmitForm, initialValues, request }: FormInterface<Sale>) {
 
     const [produtcs, setProdutcs] = useState<Produtc[]>([]);
 
@@ -26,7 +26,7 @@ export default function FormComponent({ handleSubmitForm, initialValues, request
         });
     }, []);
 
-    const { handleSubmit, handleChange, values, errors, touched, setFieldValue } = useFormik<CorporateCommunicated>({
+    const { handleSubmit, handleChange, values, errors, touched, setFieldValue, isSubmitting } = useFormik<Sale>({
         initialValues: initialValues,
         validationSchema: Validate(),
         onSubmit: values => {
@@ -76,7 +76,7 @@ export default function FormComponent({ handleSubmitForm, initialValues, request
                         helperText={touched.qtd && errors.qtd}
                     />
                 </Grid>
-                <ButtonForm link='/venda' title="Salvar" />
+                <ButtonForm link='/venda' title="Salvar" disabled={isSubmitting && request} />
             </GridComponent>
 
         </Form>

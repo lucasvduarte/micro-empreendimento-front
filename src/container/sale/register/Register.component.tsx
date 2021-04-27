@@ -10,10 +10,11 @@ import Progress from '../../../component/progress/Progress.component';
 
 export default function Register() {
 
+    let { id } = useParams<ParamTypes>();
     const { setSnackbar } = useSnackbar();
     const [sale, setSale] = useState<Sale>(INITIAL_VALUES);
     const [request, setRequest] = useState<boolean>(true);
-    let { id } = useParams<ParamTypes>();
+    const [reload, setReload] = useState<boolean>(true);
 
     useEffect(() => {
         if (id) {
@@ -28,12 +29,14 @@ export default function Register() {
     }, [id]);
 
     const onSubmit = async (data: Sale) => {
+        setReload(true);
         try {
             await (id ? putSale(data) : postSale(data));
             setSnackbar({ msg: `Venda foi ${id ? 'atualizada' : 'cadastrada'} com sucesso!`, type: 'success' });
         } catch (error) {
             setSnackbar({ msg: error.response.data.error, type: 'error' });
         }
+        setReload(false);
     };
 
     if (id && request) {
@@ -41,6 +44,6 @@ export default function Register() {
     }
 
     return (
-        <Form handleSubmitForm={onSubmit} initialValues={sale} request={id ? request : false} />
+        <Form handleSubmitForm={onSubmit} initialValues={sale} request={reload} />
     );
 }

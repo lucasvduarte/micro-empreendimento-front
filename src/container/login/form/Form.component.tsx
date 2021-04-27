@@ -2,15 +2,14 @@ import { FormInput } from '../../../component/input/InputStyle';
 import Grid from '@material-ui/core/Grid';
 import GridComponent from '../../../component/grid/GridComponent.component';
 import Login from '../interfaces/Login';
-import { INITIAL_VALUES } from '../utils/INITIAL_VALUES';
 import { useFormik } from 'formik';
-import { FormProps } from '../interfaces/Form';
 import Button from '../../../component/buttton/Button.component';
+import { FormInterface } from '../../../core/interfaces/form/Form';
 
-export default function Form({ handleSubmitForm, request }: FormProps) {
+export default function Form({ handleSubmitForm, request, initialValues }: FormInterface<Login>) {
 
     const { handleSubmit, handleChange, isSubmitting } = useFormik<Login>({
-        initialValues: INITIAL_VALUES,
+        initialValues: initialValues,
         onSubmit: values => {
             handleSubmitForm(values);
         },
