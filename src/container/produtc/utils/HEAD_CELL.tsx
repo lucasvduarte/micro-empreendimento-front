@@ -2,6 +2,7 @@ import { HeadCell, ACTION } from '../../../component/table/interfaces/TableInter
 
 export const HEAD_CELL: Array<HeadCell> = [
     { id: 'name', label: 'Name' },
+    { id: 'createAt', label: 'Data de adição', format: ['date'] },
     { id: 'qtd', label: 'Quantidade' },
     { id: 'value', label: 'Valor', viewMonetary: true },
     { id: ACTION, label: 'Ação' },
