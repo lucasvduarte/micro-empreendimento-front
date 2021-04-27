@@ -18,7 +18,7 @@ import Produtc from '../../produtc/interfaces/Produtc';
 import { getProdutc } from '../../produtc/Produtc.service';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
-const Form = ({ handleSubmitForm, initialValues }: FormProps) => {
+const Form = ({ handleSubmitForm, initialValues, request }: FormProps) => {
 
     const [produtcs, setProdutcs] = useState<Produtc[]>([]);
 
@@ -103,7 +103,7 @@ const Form = ({ handleSubmitForm, initialValues }: FormProps) => {
                         </Grid>
                     </>
                 )}
-                <IconButton type="submit" aria-label="search" size="small" >
+                <IconButton type="submit" aria-label="search" size="small" disabled={request}>
                     <SearchIcon fontSize="large" color="primary" />
                 </IconButton>
             </GridComponent>
