@@ -60,7 +60,7 @@ export default function Dashboard() {
                     </Card>
                 </Grid>
                 <Grid item xs={6} sm={4} md={3}>
-                    <Card title="Vendas adicionadas" width='300px' padding="0px 10px 20px 10px">
+                    <Card title="Produtos vendidos" width='300px' padding="0px 10px 20px 10px">
                         <FontBoldComponent title={String(data.totalSale)} />
                     </Card>
                 </Grid>
