@@ -32,7 +32,7 @@ export default function LoginComponent() {
     };
 
     return (
-        <Center height={310} >
+        <Center height={390} >
             <GridComponent justify="center" alignItems="center" direction="column" >
                 <TitleName>Meu <span>Microempreendimento</span></TitleName>
                 <Card color="rgba(255,255,255,0.2)">
