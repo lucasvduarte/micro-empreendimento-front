@@ -5,4 +5,5 @@ export default interface User {
     password: string;
     profileImg?: string;
     createAt?: string | Date;
+    confirmPassword?: string;
 }

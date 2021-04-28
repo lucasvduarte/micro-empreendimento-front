@@ -10,6 +10,7 @@ import { LinkRouter } from '../../component/link/Link';
 import GridComponent from '../../component/grid/GridComponent.component';
 import Card from '../../component/card/Card.component';
 import { INITIAL_VALUES } from './utils/INITIAL_VALUES';
+import { TitleName } from '../../component/title/Title';
 
 export default function LoginComponent() {
 
@@ -33,7 +34,8 @@ export default function LoginComponent() {
     return (
         <Center height={310} >
             <GridComponent justify="center" alignItems="center" direction="column" >
-                <Card>
+                <TitleName>Meu <span>Microempreendimento</span></TitleName>
+                <Card color="rgba(255,255,255,0.2)">
                     <div style={{ padding: 40 }}>
                         <FormLogin initialValues={INITIAL_VALUES} handleSubmitForm={onSubmit} request={request} />
                     </div>
