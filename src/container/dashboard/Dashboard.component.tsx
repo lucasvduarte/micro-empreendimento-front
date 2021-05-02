@@ -76,7 +76,7 @@ export default function Dashboard() {
                 </Grid>
                 <Grid item xs={6} sm={4} md={3}>
                     <Card title="Lucratividade" color={data.lucro >= 0 ? (data.lucro > 0 ? '#00FF7F' : '#FFFFFF') : '#FF0000'} width='300px' padding="0px 10px 20px 10px">
-                        <FontBoldComponent title={`${(data.lucro.toFixed(2)).replace('.', ',')} %`} />
+                        <FontBoldComponent title={`${(data.lucro ? data.lucro.toFixed(2) : '0').replace('.', ',')} %`} />
                     </Card>
                 </Grid>
             </GridComponent>
