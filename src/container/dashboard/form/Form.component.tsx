@@ -25,7 +25,7 @@ const Form = ({ handleSubmitForm, initialValues, request }: FormProps) => {
     useEffect(() => {
         getProdutc().then(res => {
             if (res.data) {
-                setProdutcs(res.data.filter((produtc: Produtc) => produtc.qtd > 0));
+                setProdutcs(res.data);
             }
         });
     }, []);
@@ -33,7 +33,7 @@ const Form = ({ handleSubmitForm, initialValues, request }: FormProps) => {
     const { handleSubmit, handleChange, values, setFieldValue } = useFormik<Search>({
         initialValues: initialValues,
         onSubmit: values => {
-            handleSubmitForm(values);
+            handleSubmitForm({ ...values });
         },
     });
 

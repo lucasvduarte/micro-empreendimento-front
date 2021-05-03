@@ -22,7 +22,7 @@ export default function Dashboard() {
 
     const onSubmit = async (data: Search) => {
         setRequest(true);
-        let search: Search = JSON.parse(JSON.stringify(data));
+        let search: Search = data;
 
         if (data.endDate && data.startDate) {
             search.startDate = FormatDefaultDate(data.startDate) + 'T00:00:00.000Z';
@@ -70,13 +70,13 @@ export default function Dashboard() {
                     </Card>
                 </Grid>
                 <Grid item xs={6} sm={4} md={3}>
-                    <Card title="Lucro/Prejuízo" width='300px' padding="0px 10px 20px 10px" color={data.lucro >= 0 ? (data.lucro > 0 ? '#00FF7F' : '#FFFFFF') : '#FF0000'} >
+                    <Card title="Lucro/Prejuízo" width='300px' padding="0px 10px 20px 10px" color={data.profit >= 0 ? (data.profit > 0 ? '#00FF7F' : '#FFFFFF') : '#FF0000'} >
                         <FontBoldComponent title={`R$ ${valueMonetary(data.valueSale - data.valueProducts)}`} />
                     </Card>
                 </Grid>
                 <Grid item xs={6} sm={4} md={3}>
-                    <Card title="Lucratividade" color={data.lucro >= 0 ? (data.lucro > 0 ? '#00FF7F' : '#FFFFFF') : '#FF0000'} width='300px' padding="0px 10px 20px 10px">
-                        <FontBoldComponent title={`${(data.lucro ? data.lucro.toFixed(2) : '0').replace('.', ',')} %`} />
+                    <Card title="Lucratividade" color={data.profit >= 0 ? (data.profit > 0 ? '#00FF7F' : '#FFFFFF') : '#FF0000'} width='300px' padding="0px 10px 20px 10px">
+                        <FontBoldComponent title={`${(data.profit ? data.profit.toFixed(2) : '0').replace('.', ',')} %`} />
                     </Card>
                 </Grid>
             </GridComponent>
